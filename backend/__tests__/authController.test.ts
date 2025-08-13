@@ -50,7 +50,7 @@ describe('Verification Functions', () => {
       test('should return error for invalid Aadhaar length (less than 12 digits)', async () => {
         mockValidateOrReturn.mockReturnValue({
           aadhaar: '12345678901', // 11 digits
-          name: 'John Doe',
+          name: 'Aryan Rathore',
           consent: true,
         });
         mockPrisma.udyamRegistration.findUnique.mockResolvedValue(null);
@@ -69,7 +69,7 @@ describe('Verification Functions', () => {
       test('should return error for invalid Aadhaar length (more than 12 digits)', async () => {
         mockValidateOrReturn.mockReturnValue({
           aadhaar: '1234567890123', // 13 digits
-          name: 'John Doe',
+          name: 'Aryan Rathore',
           consent: true,
         });
         mockPrisma.udyamRegistration.findUnique.mockResolvedValue(null);
@@ -131,7 +131,7 @@ describe('Verification Functions', () => {
       test('should return error when Aadhaar not found in database', async () => {
         mockValidateOrReturn.mockReturnValue({
           aadhaar: '123456789012',
-          name: 'John Doe',
+          name: 'Aryan Rathore',
           consent: true,
         });
         mockPrisma.udyamRegistration.findUnique.mockResolvedValue(null);
@@ -150,7 +150,7 @@ describe('Verification Functions', () => {
       test('should return error when name does not match', async () => {
         mockValidateOrReturn.mockReturnValue({
           aadhaar: '123456789012',
-          name: 'John Doe',
+          name: 'Aryan Rathore',
           consent: true,
         });
         mockPrisma.udyamRegistration.findUnique.mockResolvedValue({
@@ -172,11 +172,11 @@ describe('Verification Functions', () => {
       test('should handle case-insensitive name matching', async () => {
         mockValidateOrReturn.mockReturnValue({
           aadhaar: '123456789012',
-          name: 'JOHN DOE',
+          name: 'Aryan Rathore',
           consent: true,
         });
         mockPrisma.udyamRegistration.findUnique.mockResolvedValue({
-          entrepreneurName: 'john doe',
+          entrepreneurName: 'Aryan Rathore',
           mobileNumber: '9876543210',
         });
         mockPrisma.udyamRegistration.findMany.mockResolvedValue([]);
@@ -198,11 +198,11 @@ describe('Verification Functions', () => {
       test('should successfully verify Aadhaar and generate OTP', async () => {
         mockValidateOrReturn.mockReturnValue({
           aadhaar: '123456789012',
-          name: 'John Doe',
+          name: 'Aryan Rathore',
           consent: true,
         });
         mockPrisma.udyamRegistration.findUnique.mockResolvedValue({
-          entrepreneurName: 'John Doe',
+          entrepreneurName: 'Aryan Rathore',
           mobileNumber: '9876543210',
         });
         mockPrisma.udyamRegistration.findMany.mockResolvedValue([]);
@@ -297,7 +297,7 @@ describe('Verification Functions', () => {
       test('should return error for invalid PAN format', async () => {
         mockValidateOrReturn.mockReturnValue({
           pan: 'INVALID123', // Invalid format
-          panName: 'John Doe',
+          panName: 'Aryan Rathore',
           DOB: '1990-01-01',
           typeOfOrg: 'Individual',
         });
@@ -322,12 +322,12 @@ describe('Verification Functions', () => {
         for (const pan of validPanFormats) {
           mockValidateOrReturn.mockReturnValue({
             pan: pan,
-            panName: 'John Doe',
+            panName: 'Aryan Rathore',
             DOB: '1990-01-01',
             typeOfOrg: 'Individual',
           });
           mockPrisma.udyamRegistration.findFirst.mockResolvedValue({
-            panName: 'John Doe',
+            panName: 'Aryan Rathore',
             DOB: new Date('1990-01-01'),
           });
           mockPrisma.udyamRegistration.update.mockResolvedValue({});
@@ -360,7 +360,7 @@ describe('Verification Functions', () => {
         for (const pan of invalidPanFormats) {
           mockValidateOrReturn.mockReturnValue({
             pan: pan,
-            panName: 'John Doe',
+            panName: 'Aryan Rathore',
             DOB: '1990-01-01',
             typeOfOrg: 'Individual',
           });
@@ -383,7 +383,7 @@ describe('Verification Functions', () => {
       test('should return error when PAN not found in database', async () => {
         mockValidateOrReturn.mockReturnValue({
           pan: 'ABCDE1234F',
-          panName: 'John Doe',
+          panName: 'Aryan Rathore',
           DOB: '1990-01-01',
           typeOfOrg: 'Individual',
         });
@@ -402,7 +402,7 @@ describe('Verification Functions', () => {
       test('should return error when PAN name does not match', async () => {
         mockValidateOrReturn.mockReturnValue({
           pan: 'ABCDE1234F',
-          panName: 'John Doe',
+          panName: 'Aryan Rathore',
           DOB: '1990-01-01',
           typeOfOrg: 'Individual',
         });
@@ -424,12 +424,12 @@ describe('Verification Functions', () => {
       test('should handle case-insensitive PAN name matching', async () => {
         mockValidateOrReturn.mockReturnValue({
           pan: 'ABCDE1234F',
-          panName: 'JOHN DOE',
+          panName: 'Aryan Rathore',
           DOB: '1990-01-01',
           typeOfOrg: 'Individual',
         });
         mockPrisma.udyamRegistration.findFirst.mockResolvedValue({
-          panName: 'john doe',
+          panName: 'Aryan Rathore',
           DOB: new Date('1990-01-01'),
         });
         mockPrisma.udyamRegistration.update.mockResolvedValue({});
@@ -446,12 +446,12 @@ describe('Verification Functions', () => {
       test('should return error when DOB does not match', async () => {
         mockValidateOrReturn.mockReturnValue({
           pan: 'ABCDE1234F',
-          panName: 'John Doe',
+          panName: 'Aryan Rathore',
           DOB: '1990-01-01',
           typeOfOrg: 'Individual',
         });
         mockPrisma.udyamRegistration.findFirst.mockResolvedValue({
-          panName: 'John Doe',
+          panName: 'Aryan Rathore',
           DOB: new Date('1990-01-02'), // Different date
         });
 
@@ -470,12 +470,12 @@ describe('Verification Functions', () => {
       test('should successfully verify PAN', async () => {
         mockValidateOrReturn.mockReturnValue({
           pan: 'ABCDE1234F',
-          panName: 'John Doe',
+          panName: 'Aryan Rathore',
           DOB: '1990-01-01',
           typeOfOrg: 'Individual',
         });
         mockPrisma.udyamRegistration.findFirst.mockResolvedValue({
-          panName: 'John Doe',
+          panName: 'Aryan Rathore',
           DOB: new Date('1990-01-01'),
         });
         mockPrisma.udyamRegistration.update.mockResolvedValue({});
@@ -516,7 +516,7 @@ describe('Verification Functions', () => {
     test('should handle database connection errors gracefully', async () => {
       mockValidateOrReturn.mockReturnValue({
         aadhaar: '123456789012',
-        name: 'John Doe',
+        name: 'Aryan Rathore',
         consent: true,
       });
       mockPrisma.udyamRegistration.findUnique.mockRejectedValue(new Error('Database connection failed'));
@@ -537,11 +537,11 @@ describe('Verification Functions', () => {
     test('should return 200 status for successful Aadhaar verification', async () => {
       mockValidateOrReturn.mockReturnValue({
         aadhaar: '123456789012',
-        name: 'John Doe',
+        name: 'Aryan Rathore',
         consent: true,
       });
       mockPrisma.udyamRegistration.findUnique.mockResolvedValue({
-        entrepreneurName: 'John Doe',
+        entrepreneurName: 'Aryan Rathore',
         mobileNumber: '9876543210',
       });
       mockPrisma.udyamRegistration.findMany.mockResolvedValue([]);
@@ -580,7 +580,7 @@ describe('Verification Functions', () => {
     test('should return 200 status for invalid data with proper error structure', async () => {
       mockValidateOrReturn.mockReturnValue({
         pan: 'INVALID',
-        panName: 'John Doe',
+        panName: 'Aryan Rathore',
         DOB: '1990-01-01',
         typeOfOrg: 'Individual',
       });

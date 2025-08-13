@@ -5,16 +5,12 @@ export default {
   extensionsToTreatAsEsm: ['.ts'],
   moduleNameMapper: {
     '^(\.{1,2}/.*)\.js$': '$1',
-    '^zod$': 'zod/index.cjs',
   },
   transform: {
     '^.+\.ts$': ['ts-jest', { 
       useESM: true
     }],
   },
-  transformIgnorePatterns: [
-    'node_modules/(?!(zod)/)',
-  ],
   testMatch: [
     '**/__tests__/**/*.ts',
     '**/?(*.)+(spec|test).ts'
