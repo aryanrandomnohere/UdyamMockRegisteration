@@ -6,20 +6,18 @@
   "scripts": {
     "start": "node dist/server.js",
     "dev": "tsx src/server.ts",
-    "build": "tsc",
+    "prebuild": "npx prisma generate",
+    "build": "./build.sh",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "test:verbose": "jest --verbose",
-    "postbuild": "npx prisma generate --schema=./prisma/schema.prisma"
+    "postbuild": "npx prisma generate"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
-  "prisma": {
-    "schema": "./prisma/schema.prisma"
-  },
   "dependencies": {
     "@prisma/client": "^6.13.0",
     "@types/cors": "^2.8.19",
