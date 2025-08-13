@@ -11,12 +11,15 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "test:verbose": "jest --verbose",
-    "postbuild": "npx prisma generate"
+    "postbuild": "npx prisma generate --schema=./prisma/schema.prisma"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
+  "prisma": {
+    "schema": "./prisma/schema.prisma"
+  },
   "dependencies": {
     "@prisma/client": "^6.13.0",
     "@types/cors": "^2.8.19",
