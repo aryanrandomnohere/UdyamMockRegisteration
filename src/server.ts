@@ -4,12 +4,7 @@ import authRouter from "./routes/authRouter.js";
 import cors from "cors";
 const app = express();
 app.use(bodyParser.json());
-app.use(cors({
-    origin: process.env.NODE_ENV === 'production' 
-        ? process.env.FRONTEND_URL || false
-        : "http://localhost:3000",
-    credentials: true,
-}));
+app.use(cors({origin: "*"}));
 // Health check endpoint
 app.get("/health", (req, res) => {
     res.json({ status: "ok", timestamp: new Date().toISOString() });
