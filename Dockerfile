@@ -5,14 +5,13 @@ WORKDIR /app
 # Copy package files
 COPY package*.json ./
 
-# Install all dependencies (needed for build)
+# Install all dependencies
 RUN npm ci
 
 # Copy all source files
 COPY . .
 
-# Generate Prisma client and build
-RUN npx prisma generate
+# Build the application (includes Prisma generation)
 RUN npm run build
 
 # Expose port

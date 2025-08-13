@@ -4,15 +4,31 @@
   "description": "OpenBiz application",
   "main": "index.js",
   "scripts": {
-    "start": "cd backend && npm start",
-    "build": "cd backend && npm run build",
-    "setup": "cd backend && npm install",
-    "test": "cd backend && npm test"
+    "start": "node dist/server.js",
+    "build": "npx prisma generate && ./build.sh",
+    "dev": "tsx src/server.ts",
+    "test": "jest"
   },
-  "workspaces": [
-    "backend"
-  ],
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@prisma/client": "^6.13.0",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "prisma": "^6.13.0",
+    "tsx": "^4.19.3",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/node": "^24.2.1",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.4.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  }
 }
