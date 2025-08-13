@@ -31,10 +31,11 @@ This repository is now fully configured to deploy on Railway using Nixpacks.
 ### What was configured:
 
 1. **Root-level files added:**
-   - `nixpacks.toml` - Nixpacks build configuration
+   - `nixpacks.toml` - Simplified Nixpacks build configuration
    - `package.json` - Root package.json for project detection
    - `.dockerignore` - Optimized build exclusions
    - `.gitignore` - Git exclusions
+   - `test-build.sh` - Local testing script
 
 2. **Backend optimizations:**
    - Updated `server.ts` to use `PORT` environment variable
@@ -42,12 +43,14 @@ This repository is now fully configured to deploy on Railway using Nixpacks.
    - Added `/health` endpoint for monitoring
    - Fixed TypeScript build to exclude test files
    - Updated npm scripts for production deployment
+   - Fixed recursive install script issues
 
 3. **Build process:**
    - Node.js 20 runtime
+   - Simplified dependency installation
    - Prisma client generation
    - TypeScript compilation to `dist/` folder
-   - Production dependencies installation
+   - Production-ready compiled JavaScript execution
 
 ### Environment Variables
 
@@ -80,6 +83,22 @@ Set these environment variables in Railway:
 3. **Verify deployment:**
    - Check the health endpoint: `https://your-app.up.railway.app/health`
    - Test your API endpoints: `https://your-app.up.railway.app/api/v1/udyam/...`
+
+### Local Testing
+
+Test the build process locally before deploying:
+
+```bash
+# Test the nixpacks build process
+./test-build.sh
+
+# This will:
+# - Clean previous builds
+# - Install dependencies
+# - Generate Prisma client
+# - Build TypeScript to JavaScript
+# - Verify build artifacts
+```
 
 ## Scripts
 
