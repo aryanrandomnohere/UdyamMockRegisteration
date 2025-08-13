@@ -1,14 +1,10 @@
 #!/bin/bash
 set -e
 
-echo "Starting build process..."
-
-# Generate Prisma client using config file
-echo "Generating Prisma client..."
-npx prisma generate
+echo "Starting TypeScript build..."
 
 # Build TypeScript
 echo "Building TypeScript..."
 npx tsc
 
-echo "Build completed successfully!"
+echo "TypeScript build completed successfully!"

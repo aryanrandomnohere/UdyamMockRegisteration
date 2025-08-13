@@ -6,7 +6,6 @@
   "scripts": {
     "start": "node dist/server.js",
     "dev": "tsx src/server.ts",
-    "prebuild": "npx prisma generate",
     "build": "./build.sh",
     "test": "jest",
     "test:watch": "jest --watch",
